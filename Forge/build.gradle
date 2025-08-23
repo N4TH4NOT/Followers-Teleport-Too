@@ -9,7 +9,7 @@ base {
 }
 
 mixin { // mixin
-    config 'followersteleporttoo.mixins.json' // mixin
+    config "${mod_name}.mixins.json" // mixin
     
     debug.verbose = true // mixin
     debug.export = true // mixin
@@ -32,7 +32,7 @@ minecraft {
     runs {
         client {
             workingDirectory project.file('run')
-            arg "-mixin.config=followersteleporttoo.mixins.json" // mixin
+            arg "-mixin.config=${mod_name}.mixins.json" // mixin
 
             ideaModule "${rootProject.name}.${project.name}.main"
             taskName 'Client'
@@ -46,7 +46,7 @@ minecraft {
 
         server {
             workingDirectory project.file('run')
-            arg "-mixin.config=followersteleporttoo.mixins.json" // mixin
+            arg "-mixin.config=${mod_name}.mixins.json" // mixin
 
             ideaModule "${rootProject.name}.${project.name}.main"
             taskName 'Server'
@@ -60,7 +60,7 @@ minecraft {
 
         data {
             workingDirectory project.file('run')
-            arg "-mixin.config=followersteleporttoo.mixins.json" // mixin
+            arg "-mixin.config=${mod_name}.mixins.json" // mixin
             
             ideaModule "${rootProject.name}.${project.name}.main"
             args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
