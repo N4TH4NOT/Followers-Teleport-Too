@@ -16,7 +16,9 @@ public class NeoForgeTeleportEvent {
 		}
 
 		Entity entity = e.getEntity();
-		TeleportEvent.onPlayerTeleport(entity.level(), entity, e.getTargetX(), e.getTargetY(), e.getTargetZ());
+		if (!TeleportEvent.onPlayerTeleport(entity.level(), entity, e.getTargetX(), e.getTargetY(), e.getTargetZ())) {
+            e.setCanceled(true);
+        }
 	}
 
 	@SubscribeEvent

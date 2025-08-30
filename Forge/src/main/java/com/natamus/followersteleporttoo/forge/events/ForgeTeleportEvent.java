@@ -23,7 +23,11 @@ public class ForgeTeleportEvent {
 		}
 
 		Entity entity = e.getEntity();
-		TeleportEvent.onPlayerTeleport(entity.level(), entity, e.getTargetX(), e.getTargetY(), e.getTargetZ());
+		if (!TeleportEvent.onPlayerTeleport(entity.level(), entity, e.getTargetX(), e.getTargetY(), e.getTargetZ())) {
+            e.setTargetX(e.getPrevX());
+            e.setTargetY(e.getPrevY());
+            e.setTargetZ(e.getPrevZ());
+        }
 	}
 
 	@SubscribeEvent
